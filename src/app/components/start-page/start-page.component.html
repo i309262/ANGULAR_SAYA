@@ -1,0 +1,45 @@
+
+<form>
+  <input type="text" id="searchString" required [(ngModel)]="searchString" name="searchString">
+  <button type="submit" (click)="searchKweet()">Search kweet</button>
+</form>
+
+<form>
+  <textarea rows="5" id="kweetMessage" required [(ngModel)]="kweetMessage" name="kweetMessage"></textarea>
+  <button type="submit"  (click)="createKweet()">Kweet</button>
+</form>
+
+<br>
+<strong>Timeline: </strong>
+  <div *ngFor="let o of kweetsObject"> 
+    <strong><a (click)="visitProfile(o.poster.username)"> {{o.poster.username}} </a> zegt:</strong> <br>
+    <!--<div> gepost door: <span (click)="redirectToProfile(kweet.username)">{{o.username}}</span>-->
+    {{o.message}} 
+  </div>
+<br>
+
+
+
+<strong>Following: </strong> 
+<div *ngIf="userFollowing">
+  <div  *ngFor="let userFollowing of userFollowing"> {{userFollowing.username}} </div>
+</div>
+<br>
+<strong>Followers: </strong>
+<div *ngIf="userFollowers">
+  <div *ngFor="let userFollowers of userFollowers"> {{userFollowers.username}} </div>
+</div>
+
+<div>
+  <strong>All users: </strong>
+  <div *ngIf="usersObject">  
+    <div *ngFor="let u of usersObject">
+      <a (click)="visitProfile(u.username)"> {{u.username}} </a>
+    </div>
+  </div>
+</div>
+
+<br>
+hier socket shit:
+<br>
+<div id="socket"></div>

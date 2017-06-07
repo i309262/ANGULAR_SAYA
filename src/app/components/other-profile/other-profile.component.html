@@ -1,0 +1,37 @@
+<div *ngIf="user">
+  <div *ngIf="isSelf == false">
+  <strong> User info: </strong> <br>
+  name: {{user.name}} <br>
+  locatie: {{user.location}} <br>
+  website: {{user.website}} <br>
+  bio: {{user.bio}}
+  </div>
+  <div *ngIf="isSelf == true">
+  <form>
+    name:     <textarea rows="1"     name="name"     required [(ngModel)]="user.name"></textarea> <br>
+    locatie:  <textarea rows="1"    name="location"  required [(ngModel)]="user.location"></textarea> <br>
+    website:  <textarea rows="1"    name="website"  required [(ngModel)]="user.website"></textarea> <br>
+    Bio:      <textarea rows="1"    name="userBio"  required [(ngModel)]="user.bio"></textarea> <br>
+    <button type="submit"  (click)="editUser()">edit</button>
+  </form>
+  </div>
+</div>
+
+
+<div *ngIf="isSelf == false"> 
+  <button type="submit"  (click)="followUser()">Follow</button> 
+</div>
+
+<br>
+<strong>Recente kweets: </strong>
+  <div *ngFor="let o of kweetsObject"> 
+    <strong>{{o.poster.username}} zegt:</strong> <br>
+    {{o.message}} 
+  </div>
+<br>
+
+<strong>Following: </strong>
+<div *ngFor="let userFollowing of userFollowing"> {{userFollowing.username}} </div>
+<br>
+<strong>Followers: </strong>
+<div *ngFor="let userFollowers of userFollowers"> {{userFollowers.username}} </div>

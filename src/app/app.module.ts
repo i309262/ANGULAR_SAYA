@@ -3,17 +3,24 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule} from "@angular/router";
+import {CookieService} from "angular2-cookie/services/cookies.service";
 
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { StartPageComponent } from './start-page/start-page.component';
+import { StartPageComponent } from './components/start-page/start-page.component';
 import {KweetService} from "./services/kweet.service";
+import {UserService} from "./services/user.service";
+import { LoginComponent } from './components/login/login.component';
+import { OtherProfileComponent } from './components/other-profile/other-profile.component';
+import { WebSocketComponent } from './components/web-socket/web-socket.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    StartPageComponent
+    StartPageComponent,
+    LoginComponent,
+    OtherProfileComponent,
+    WebSocketComponent
   ],
   imports: [
     BrowserModule,
@@ -21,12 +28,24 @@ import {KweetService} from "./services/kweet.service";
     HttpModule,
     RouterModule.forRoot([
       {
-        path: 'user',
-        component: UserComponent
+        path: 'otherprofile',
+        component: OtherProfileComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: '',
+        component: StartPageComponent
+      },
+            {
+        path: 'websocket',
+        component: WebSocketComponent
       }
      ])
   ],
-  providers: [KweetService],
+  providers: [KweetService, UserService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

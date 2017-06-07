@@ -3,7 +3,6 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/Rx'; //volgens mij zou die hier boven al moeten werken.. maar doettie niet
 import { Http, Response, RequestOptions, Headers } from "@angular/http";
 import { Kweet } from "app/models/Kweet";
-import { User } from "app/models/User"; //om te testen
 
 
 @Injectable()
@@ -13,14 +12,32 @@ export class KweetService {
 
   constructor(private http: Http) {
   }
-  //constructor() {}
 
-//tijdelijk met user om te testen, de kweet rest ligt in puin
-  public getAll(): Observable<User[]> {
-    const endPoint = 'resources/user/all';
+    public getRecent(username: string): Observable<any[]> {
+    const endPoint = 'resources/kweet/recent/' + username;
     const url = this.globalUrl + endPoint;
     return this.getRequest(url);
   }
+
+    public getAll(username: string): Observable<any[]> {
+    const endPoint = 'resources/kweet/all/' + username;
+    const url = this.globalUrl + endPoint;
+    return this.getRequest(url);
+  }
+
+    public getKweetByMessage(content: string): Observable<Kweet[]> {
+    const endPoint = 'resources/kweet/search/' + content;
+    const url = this.globalUrl + endPoint;
+    return this.getRequest(url);
+  }
+
+    public createKweet(username: string, message: string):  Observable<Kweet> {
+    const endPoint = 'resources/kweet/create/';
+    const url = this.globalUrl + endPoint;
+    let body = 'username=' + username + '&message=' + message;
+    return this.postRequest(url, body);
+  }
+
 
   private getRequest(url: string): any {
     let headers = new Headers({

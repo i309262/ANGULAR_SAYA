@@ -1,0 +1,12 @@
+<p>websocket werkt</p>
+<div>
+    <form>
+        <textarea  id="inputmessage" required [(ngModel)]="messageString" name="messageString"></textarea>
+        <button type="submit" (click)="send()">Send message</button>
+    </form>
+
+    <br>
+    hier socket shit:
+    <br>
+    <div id="socket"> </div>
+</div>

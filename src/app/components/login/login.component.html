@@ -1,0 +1,10 @@
+<p> login werkt </p>
+
+
+<form>
+  <input type="text" id="name" required [(ngModel)]="name" name="name"> <strong> Username </strong>
+  <br>
+  <input type="password" id="password" required [(ngModel)]="password" name="password"> <strong> Password </strong>
+  <br>
+  <button type="submit" class="btn btn-primary btn-block" (click)="formProcess()">Log In</button>
+</form>
