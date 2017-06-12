@@ -8,7 +8,7 @@ import { Kweet } from "app/models/Kweet";
 @Injectable()
 export class KweetService {
 
-  private globalUrl = 'http://localhost:8080/Kwetter/';
+  private globalUrl = 'http://localhost:8080/KweetRestMicroservice/';
 
   constructor(private http: Http) {
   }

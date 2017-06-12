@@ -11,7 +11,7 @@ export class UserService {
   private loggedInUser: User = null;
   public isLoggedIn: boolean = false;
 
-  private globalUrl = 'http://localhost:8080/Kwetter/';
+  private globalUrl = 'http://localhost:8080/UserRestMicroservice/';
 
   constructor(private http: Http) {
   }
@@ -61,21 +61,6 @@ export class UserService {
     let body = 'follower=' + follower + '&leader=' + leader;
     return this.postRequest(url, body);
   }
-
-  //   LogIn(userName, password){
-  //   this.http.get(this.globalUrl + '/user/byname/' + userName).subscribe(
-  //     (response)=> {
-  //       this.loggedInUser = response.json();
-  //       console.log(this.loggedInUser);
-  //       this.cookie.putObject("loggedInUser", this.loggedInUser);
-  //       this.isLoggedIn = true;
-  //     }, (error)=> {
-  //       this.loggedInUser = null;
-  //       this.cookie.remove("loggedInUserId");
-  //       this.isLoggedIn = false;
-  //     }
-  //   );
-  // }
 
   private getRequest(url: string): any {
     let headers = new Headers({

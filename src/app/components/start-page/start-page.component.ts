@@ -105,7 +105,8 @@ public websocket: WebSocket;
     this.kweetService.createKweet(Cookie.get('loggedUser'), this.kweetMessage).subscribe(returnedJson => {
       console.log('ceatekweet: ' + returnedJson);
       this.kweetMessage = null;
-      this.ngOnInit();
+      this.getAllKweets(Cookie.get('loggedUser'));
+      //this.ngOnInit();
     });
   }
 
